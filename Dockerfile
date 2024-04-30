@@ -5,7 +5,7 @@ FROM splunk/splunk:latest
 COPY . /opt/splunk/etc/apps/softmania_infra_monitoring
 
 # Expose the Splunk web port
-EXPOSE 8005
+EXPOSE 8050
 
 # Start Splunk when the container launches
 CMD ["/opt/splunk/bin/splunk", "start", "--accept-license", "--answer-yes", "--no-prompt"]
