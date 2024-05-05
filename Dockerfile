@@ -8,4 +8,4 @@ COPY . /opt/splunk/etc/apps/softmania_infra_monitoring
 EXPOSE 8050
 
 # Start Splunk when the container launches
-CMD ["/opt/splunk/bin/splunk", "start", "--accept-license", "--answer-yes", "--no-prompt"]
+CMD ["sh", "-c", "splunk start --accept-license --answer-yes --no-prompt && tail -f /opt/splunk/var/log/splunk.log"]
