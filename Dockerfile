@@ -7,5 +7,5 @@ COPY . /opt/splunk/etc/apps/softmania_infra_monitoring
 # Expose the Splunk web port
 EXPOSE 8050
 
-# Start Splunk when the container launches
-CMD ["sh", "-c", "splunk start --accept-license --answer-yes --no-prompt && tail -f /opt/splunk/var/log/splunk.log"]
+# Start Splunk in the foreground to keep the container running
+CMD ["/opt/splunk/bin/splunk", "start", "--accept-license", "--answer-yes", "--no-prompt", "--foreground"]
