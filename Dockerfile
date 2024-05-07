@@ -1,11 +1,16 @@
 # Use the official Splunk Enterprise image from Docker Hub
 FROM splunk/splunk:latest
 
-# Copy your Splunk application into the container
-COPY . /opt/splunk/etc/apps/softmania_infra_monitoring
+# Set environment variables
+ENV SPLUNK_START_ARGS="--accept-license"
+ENV SPLUNK_USER="admin"
+ENV SPLUNK_PASSWORD="password"
 
-# Expose the Splunk web port
-EXPOSE 8050
+# Expose Splunk ports
+EXPOSE 8000 8088 8089
 
-# Start Splunk in the foreground to keep the container running
-CMD ["/opt/splunk/bin/splunk", "start", "--accept-license", "--answer-yes", "--no-prompt", "--foreground"]
+# Create volumes for persistent data
+VOLUME ["/opt/splunk/etc", "/opt/splunk/var"]
+
+# Start Splunk
+CMD ["splunk", "start", "--accept-license"]
