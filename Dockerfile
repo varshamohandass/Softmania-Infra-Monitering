@@ -4,7 +4,7 @@ FROM splunk/splunk:latest
 # Copy your Splunk application into the container
 COPY . /opt/splunk/etc/apps/softmania_infra_monitoring
 
-# Expose the Splunk web port
+# Expose the Splunk web port .
 EXPOSE 8000 8089 9997
 
 # Start Splunk when the container launches
